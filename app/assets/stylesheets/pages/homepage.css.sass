@@ -1,0 +1,101 @@
+@import vars
+@import compass
+@import mixins
+
+body.homepage
+
+  #flash
+    top: 0
+  
+  #content
+    padding-top: 0
+    overflow: hidden
+    > .container
+      width: 100%
+
+  #introduction
+    background-color: white
+    .container
+      height: 420px
+      padding: 20px 0 40px
+    
+    .screenshot
+      +box-shadow(inset rgba($dark, .2) 0 -5px 10px)
+      position: absolute
+      right: 0
+      bottom: 0
+    
+    .heading
+      margin-bottom: 60px
+      font-size: 40px
+      font-weight: 700
+      text-align: center
+      .light
+        +opacity(.8)
+        font-weight: 500
+        font-size: 30px
+    
+    .benefits
+      +reset-list
+      +opacity(.8)
+      margin-bottom: 20px
+      padding: 40px 0
+      font-size: 20px
+      li
+        line-height: 2.2
+    
+    .signup
+      float: left
+      padding: 15px 30px 13px
+      font-size: 18px
+
+  .features,
+  .statistics
+    padding: 100px 0
+    text-align: center
+    
+    .heading
+      margin-bottom: 10px
+      font-size: 25px
+    p
+      +opacity(.8)
+      line-height: 1.5
+  
+  .statistics
+    .heading
+      margin-bottom: 20px
+      font-size: 30px
+      font-weight: 500
+  
+  .details
+    position: relative
+    height: 400px
+    margin-bottom: 40px
+    padding-top: 20px
+    padding-right: 50%
+    
+    .screenshot
+      position: absolute
+      left: 50%
+      top: -30px
+    
+    .heading
+      margin-bottom: 20px
+    
+    .section
+      margin-bottom: 60px
+    
+    ul
+      +reset-list
+      +opacity(.8)
+      li
+        line-height: 2.2
+  
+  .cta
+    +border-radius(4px)
+    +opacity(.8)
+    display: block
+    padding: 20px
+    color: $text
+    background-color: white
+    text-align: center

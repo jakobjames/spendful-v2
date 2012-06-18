@@ -1,0 +1,25 @@
+.nav-pages.nav.pull-left
+
+  = link_to t("home.action"), root_path
+  
+  - if logged_in?
+  
+    - if budgets?
+      = link_to t("budget.action"), budgets_path
+    - else
+      = link_to t("budgets.new.action"), budgets_path
+    = link_to t("account.action"), account_path
+
+  - else
+  
+    = link_to t("login.action"), login_path
+    = link_to t("signup.action"), signup_path
+
+  -#
+    .legal
+      = link_to t("terms.action"), terms_path
+      = link_to t("privacy.action"), privacy_path
+
+%p.copyright
+  &copy;#{Date.today.year}
+  = t("domain")

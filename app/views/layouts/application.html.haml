@@ -1,0 +1,40 @@
+!!!5
+%html
+
+  %head
+
+    %title= content_for?(:title) ? content_for(:title) + " — #{t("brand")}" : "#{t("brand")}. #{t("tagline")}."
+
+    %meta{:charset => "utf-8"}
+    = csrf_meta_tags
+
+    %link{:rel => "icon", :href => image_path("favicon.png"), :type => "image/png"}
+    %link{:rel => "apple-touch-icon", :href => image_path("favicon.png"), :type => "image/png"}
+    
+    = stylesheet_link_tag :application
+    = javascript_include_tag :application
+    
+    = yield :assets if content_for?(:assets)
+
+  %body{:class => page_classes}
+
+    #wrapper
+    
+      #main
+      
+        #header
+          .container
+            - if page?
+              = render :partial => "pages/header"
+            - else
+              = render :partial => "shared/header"
+        
+        #content
+          = render :partial => "budgets/header" if budget?
+          = render :partial => "shared/flashes"
+          .container
+            = yield
+
+    #footer
+      .container
+        = render :partial => "shared/footer"

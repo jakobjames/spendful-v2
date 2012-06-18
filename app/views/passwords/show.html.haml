@@ -1,0 +1,20 @@
+- title "New Password"
+- @body_class = "pages"
+
+
+.span6.offset3.form-box
+
+  %h1.heading
+    New Password
+  
+  = form_tag reset_password_path(params[:id]), :method => :put, :novalidate => "true", :class => "form-horizontal" do
+
+    .control-group
+      = label_tag :password, "Password", :class => "control-label"
+      .controls
+        = password_field_tag :password
+        
+    .form-actions
+      %button.button.button-primary{:type => "submit"}
+        = t("continue")
+        %b.icon.icon-arrow-right.icon-white

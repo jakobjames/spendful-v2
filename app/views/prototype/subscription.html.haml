@@ -1,0 +1,42 @@
+- title t("subscription.title")
+- @active = "subscription"
+- @body_class = "subscription"
+
+- content_for :assets do
+  = stylesheet_link_tag "pages/subscription"
+  -#= javascript_include_tag "pages/subscription"
+
+
+.container
+
+  = render :partial => "users/aside"
+
+  .content.pull-left
+
+    %h1= t("subscription.title")
+    
+    %table.table-bordered.overview
+      %tr
+        %th
+          Started
+        %th
+          Next renewal
+        %th
+          Total paid
+      %tr
+        %td
+          %strong 11 Aug 2011
+          12 months, 5 days ago
+        %td
+          %strong 12 Sep 2012
+          24 days from now
+        %td
+          %strong &pound;120.00
+          &pound;5.00 per month (x5)
+
+  .delete
+  
+    %h3.heading Delete your subscription?
+    
+    %a.button.button-negative{:href => upgrade_path, :data => {:confirm => "Are you sure?", :method => "delete"}}
+      = t("subscription.cancel")

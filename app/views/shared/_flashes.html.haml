@@ -1,0 +1,4 @@
+- if flash.any?
+  - flash.each do |key, value|
+    #flash.alert.alert-block{:class => "#{key.to_s == 'notice' ? 'alert-info' : 'alert-error'}"}
+      %strong= value

@@ -1,0 +1,11 @@
+.control-group
+  = form.label :email, :class => "control-label"
+  .controls
+    = form.email_field :email, :autocorrect => "off", :autocapitalize => "off"
+
+.control-group
+  = form.label :password, :class => "control-label"
+  .controls
+    = form.password_field :password
+    - if params[:action] == "edit"
+      %p.help-block= t("account.hint.password")

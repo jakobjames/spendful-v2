@@ -1,0 +1,11 @@
+development:
+  adapter: postgresql
+  database: spendful_v2_development
+
+test:
+  adapter: postgresql
+  database: spendful_v2_test
+
+production:
+  adapter: postgresql
+  database: spendful_v2

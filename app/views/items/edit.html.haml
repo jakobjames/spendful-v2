@@ -1,0 +1,37 @@
+- title "Edit item"
+
+
+.container
+
+  .span6.offset3.form-box
+
+    %h1.heading
+      Edit item
+    
+    = form_for [@budget, @item], :html => {:class => "form-horizontal", :novalidate => "true"} do |form|
+
+      = render :partial => "shared/form-errors", :locals => {:object => @item}
+      = render :partial => "shared/form-errors", :locals => {:object => @occurrence}
+
+      = render :partial => "form", :locals => {:form => form}
+      
+      = hidden_field_tag :occurrence, @occurrence.date
+
+      .form-actions
+        %button.button.button-primary{:type => "submit"}= t("actions.save")
+
+
+  .span6.offset3.form-box.delete
+  
+    %h3.heading Delete this item?
+    
+    .form-actions
+
+      %a.button.button-negative{:href => budget_item_path(@budget, @item, {:occurrence => @occurrence.date}), :data => {:confirm => "Are you sure?", :method => "delete"}}
+        Delete this occurrence
+      
+      .delete
+        %a.button.button-negative{:href => budget_item_path(@budget, @item), :data => {:confirm => "Are you sure?", :method => "delete"}}
+          Delete this item 
+          %br
+          (and all occurrences)

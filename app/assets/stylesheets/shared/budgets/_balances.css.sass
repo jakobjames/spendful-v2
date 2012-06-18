@@ -1,0 +1,17 @@
+.balance
+
+  .balance-amount
+    font-size: 25px
+    &.today
+      font-size: 30px
+      .units
+        margin-left: -8px
+    &.positive
+      color: $green
+    &.negative
+      color: $red
+  
+  .balance-label
+    +uppercase
+    +opacity(.6)
+    font-weight: 500

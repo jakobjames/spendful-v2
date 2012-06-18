@@ -1,0 +1,26 @@
+- title t("account.title")
+- @active = "account"
+
+.container
+
+  .span6.offset3.form-box
+
+    %h1.heading
+      = t("account.title")
+    
+    = form_for @user, :url => account_path, :method => "put", :html => {:class => "form-horizontal", :novalidate => "true", :autocomplete => "off"} do |form|
+
+      = render :partial => "shared/form-errors", :locals => {:object => @user}
+
+      = render :partial => "form", :locals => {:form => form}
+
+      .form-actions
+        %button.button.button-primary{:type => "submit"}= t("actions.save")
+
+  .span6.offset3.form-box.delete
+  
+    %h3.heading Want to leave?
+    
+    .form-actions
+      %a.button.button-negative{:href => account_path, :data => {:confirm => "Are you sure?", :method => "delete"}}
+        Delete my account

@@ -1,0 +1,116 @@
+- @body_class = "homepage"
+
+- content_for :assets do
+  = stylesheet_link_tag "pages/homepage"
+  -#= javascript_include_tag "pages/homepage"
+
+
+#introduction
+
+  .container
+
+    %h1.heading
+      Your money
+      %span.light
+        &mdash;
+        today, and in the future.
+
+    %img.screenshot{:src => image_path("pages/home/screenshot1.png"), :width => 600, :height => 350}
+    
+    %ul.benefits
+      %li
+        Learn where you spend money
+      %li
+        See your balance, months from now
+      %li
+        Know how much you need to save
+
+    %a.button.button-positive.signup{:href => signup_path}
+      Try it for free
+      %b.icon.icon-arrow-right.icon-white
+
+.container
+
+  .row.features
+
+    .span4.feature
+      %h2.heading Track
+      %p
+        Tracking your money
+        %strong removes the mystery
+        of where you spent it all.
+
+    .span4.feature
+      %h2.heading Budget
+      %p
+        A budget makes sure you can
+        %strong pay for everything
+        you need to.
+
+    .span4.feature
+      %h2.heading Forecast
+      %p
+        Instantly see how changes to your budget 
+        %strong affects your future
+        finances.
+
+  .details
+
+    %img.screenshot{:src => image_path("pages/home/screenshot2.png"), :width => 750, :height => 530}
+
+    .section
+
+      %h3.heading
+        What can 
+        %strong
+          you
+        do with Spendful?
+
+      %ul
+        %li
+          See all your past, and future finances in one page, month by month.
+        %li
+          Schedule re-occurring items, such as salary and regular bills.
+        %li
+          Group multiple transactions under a single item, e.g. "Groceries".
+        %li
+          See your money months or years into the future.
+
+
+    .section
+
+      %h3.heading
+        We're all about 
+        %strong
+          Trust &amp; Security
+
+      %ul.trust
+        %li
+          We don't require access to your bank account, or statements.
+        %li
+          Everything is private, none of your data is personally identifiable.
+
+
+  .row.statistics
+
+    .span4.statistic
+      %h4.heading
+        10,000+
+      %p
+        &hellip;people in over 100 countries.
+
+    .span4.statistic
+      %h4.heading
+        &pound;182million+
+      %p
+        &hellip;in multiple currencies, every month.
+
+    .span4.statistic
+      %h4.heading
+        52,000+
+      %p
+        &hellip;items &amp; transactions per month.
+
+  %a.cta{:href => signup_path}
+    %strong Still not sure?
+    It’s completely free, and you can get started in less than 30 seconds.

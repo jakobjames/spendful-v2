@@ -1,0 +1,53 @@
+.balances
+
+  - if @today.end_of_month == @date_end
+
+    .balance.today
+      %h3
+        %strong Today
+        &mdash;
+        = @date.strftime(Constants::Formats::SHORT_DATE).squish
+      - balance = @budget.balance(@date)
+      - balance = cents_to_money(balance, @budget.currency)
+      - negative = balance.cents < 0
+      %em.today{:class => (negative ? 'negative' : 'positive') }
+        = balance.currency.html_entity.html_safe
+        = balance.format(:symbol => false, :no_cents_if_whole => true)
+  
+  - else
+
+    .balance.beginning-of-month
+      %h3
+        %strong Started
+      - balance = @budget.balance(@date_beginning - 1.day)
+      - balance = cents_to_money(balance, @budget.currency)
+      - negative = balance.cents < 0
+      %em{:class => (negative ? 'negative' : 'positive') }
+        = balance.currency.html_entity.html_safe
+        = balance.format(:symbol => false, :no_cents_if_whole => true)
+
+  .balance.end-of-month
+    - days = @date_end.day - @date.day
+    %h3
+      %strong Ending
+      - if @today.end_of_month == @date_end
+        = "in #{pluralize(days, 'day')}"
+    - balance = @budget.balance(@date_end)
+    - balance = cents_to_money(balance, @budget.currency)
+    - negative = balance.cents < 0
+    %em{:class => (negative ? 'negative' : 'positive') }
+      = balance.currency.html_entity.html_safe
+      = balance.format(:symbol => false, :no_cents_if_whole => true)
+
+
+.budgets
+
+  %h3= t("budgets.title")
+
+  .nav
+    - current_user.budgets.order(:updated_at).each do |budget|
+      %a{:href => budget_path(budget), :class => "#{'active' if budget == @budget}"}= budget.name
+
+  %a.button.button-lighter.button-small.new-budget{:href => new_budget_path}
+    %b.icon.icon-plus
+    New budget

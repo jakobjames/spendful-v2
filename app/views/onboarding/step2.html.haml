@@ -1,0 +1,57 @@
+- title "Spendful Tour"
+- @body_class = "onboarding"
+
+- content_for :assets do
+  = stylesheet_link_tag "pages/onboarding"
+  = javascript_include_tag "pages/onboarding"
+
+.container
+
+  .row
+    
+    .span6.offset3
+  
+      %h1.heading
+        Add one type of expense
+  
+      %p
+        We call this an "Expense item". You'll be able to add more income and expense items later. 
+  
+      = form_for [@budget, @item], :url => finish_onboarding_path, :html => {:class => "form-horizontal", :novalidate => "true"} do |form|
+
+        = render :partial => "shared/form-errors", :locals => {:object => @item}
+      
+        = form.hidden_field :category, :value => "expense"
+        = hidden_field_tag :budget_id, @budget.id
+
+        .control-group
+          = form.label :name, :class => "control-label"
+          .controls
+            = form.text_field :name, :value => "Groceries"
+            %p.help-block
+              You can change this to anything you like
+
+        .control-group
+          = form.label :amount, :class => "control-label"
+          .controls
+            = form.phone_field :amount, :value => cents_to_money(@item.amount)
+            %p.help-block
+              Estimate how much it will be
+  
+        .control-group
+          = form.label :starts_on, :class => "control-label"
+          .controls
+            = form.text_field :starts_on, :value => (@item.starts_on.try(:strftime, "%d/%m/%Y")), :class => "date"
+            %p.help-block
+              Choose the first day this month that you're most likely to spend it
+
+        .control-group
+          = form.label :schedule, :class => "control-label"
+          .controls
+            = form.select :schedule, Constants::Items::SCHEDULES.map{ |s| [s.capitalize, s] }
+            %p.help-block
+              Change the schedule if it occurs more than once
+
+        .form-actions
+          %button.button.button-primary{:type => "submit"}= t("actions.save")
+  

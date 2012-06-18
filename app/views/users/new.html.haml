@@ -1,0 +1,21 @@
+- title t("signup.title")
+- @body_class = "pages"
+
+
+.container
+
+  .span6.offset3.form-box
+
+    %h1.heading
+      = t("signup.title")
+    
+    = form_for @user, :html => {:class => "form-horizontal", :novalidate => "true"} do |form|
+
+      = render :partial => "shared/form-errors", :locals => {:object => @user}
+
+      = render :partial => "form", :locals => {:form => form}
+
+      .form-actions
+        %button.button.button-primary{:type => "submit"}
+          = t("continue")
+          %b.icon.icon-arrow-right.icon-white

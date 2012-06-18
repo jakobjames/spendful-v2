@@ -1,0 +1,24 @@
+- title "Spendful Tour"
+- @body_class = "onboarding"
+
+- content_for :assets do
+  = stylesheet_link_tag "pages/onboarding"
+  = javascript_include_tag "pages/onboarding"
+
+
+.container
+
+  .row
+    
+    .span6.offset3
+  
+      %h1.heading
+        Would you like a quick introduction to how Spendful works?
+
+      %p
+        We'll guide you through the basics, and it will take about 2 minutes.
+
+      .actions
+        = link_to "Yes, Let's go!", step1_onboarding_path, :method => "post", :class => "button button-primary"
+
+        %a.button{:href => new_budget_path} No, thanks
