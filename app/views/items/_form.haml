@@ -1,0 +1,35 @@
+= form.hidden_field :category
+
+.control-group
+  = form.label :name, :class => "control-label"
+  .controls
+    = form.text_field :name
+
+- unless @item.transactions.normal.any? { |txn| txn.occurrence > @occurrence.date }
+
+  .control-group
+    = form.label :amount, :class => "control-label"
+    .controls
+      = form.phone_field :amount, :value => cents_to_money(@item.amount)
+    
+- unless @item.transactions.normal.any?
+
+  .control-group
+    = form.label :starts_on, :class => "control-label"
+    .controls
+      = form.text_field :starts_on, :value => (@item.starts_on.try(:strftime, "%d/%m/%Y") || session[:budget_date].strftime("%d/%m/%Y")), :class => "date"
+  
+- unless @item.transactions.normal.any? { |txn| txn.occurrence > @occurrence.date }
+    
+  .control-group
+    = form.label :schedule, :class => "control-label"
+    .controls
+      = form.select :schedule, Constants::Items::SCHEDULES.map{ |s| [s.capitalize, s] }
+    
+- unless @item.transactions.normal.any? { |txn| txn.occurrence > @occurrence.date }
+    
+  .control-group
+    = form.label :ends_on, :class => "control-label"
+    .controls
+      = form.text_field :ends_on, :value => @item.ends_on.try(:strftime, "%d/%m/%Y"), :class => "date"
+      %p.help-block Leave blank if schedule is "Once" or the schedule never ends

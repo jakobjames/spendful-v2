@@ -1,0 +1,29 @@
+- title t("login.title")
+- @body_class = "pages"
+
+
+.span6.offset3.form-box
+
+  %h1.heading
+    = t("login.title")
+  
+  %form.form-horizontal{:method => "post", :action => login_path, :novalidate => true}
+
+    .control-group
+      = label_tag :email, "Email", :class => "control-label"
+      .controls
+        = email_field_tag :email, "", :autocorrect => "off", :autocapitalize => "off"
+
+    .control-group
+      = label_tag :password, "Password", :class => "control-label"
+      .controls
+        = password_field_tag :password
+        %p.help-block
+          %a{:href => forgot_password_path} Forgot your password?
+          
+    -# TODO: add a "remember me" checkbox to set a permanent cookie
+
+    .form-actions
+      %button.button.button-primary{:type => "submit"}
+        = t("continue")
+        %b.icon.icon-arrow-right.icon-white

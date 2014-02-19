@@ -1,0 +1,29 @@
+@import vars
+@import compass
+@import mixins
+
+@import onboarding/*
+
+body.onboarding
+
+  .heading
+    font-size: 30px
+    line-height: 1.5
+  
+  p
+    margin-bottom: 20px
+    line-height: 1.6
+  
+  form
+    padding-top: 20px
+  
+  .actions
+    margin-top: 40px
+    .button,
+    button
+      +opacity(.6)
+      float: right
+    .button-primary
+      +opacity(1)
+      float: left
+      width: 160px

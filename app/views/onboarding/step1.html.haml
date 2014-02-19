@@ -1,0 +1,57 @@
+- title "Spendful Tour"
+- @body_class = "onboarding"
+
+- content_for :assets do
+  = stylesheet_link_tag "pages/onboarding"
+  = javascript_include_tag "pages/onboarding"
+
+.container
+
+  .row
+    
+    .span6.offset3
+  
+      %h1.heading
+        Add one type of income you receive
+  
+      %p
+        We call this an "Income item". A budget is made up of lots of income and expense items, they can appear once or occur many times. The amount you enter for a budget item is a best guess at how much that income will receive or expense will cost you.
+
+      = form_for [@budget, @item], :url => step2_onboarding_path, :html => {:class => "form-horizontal", :novalidate => "true"} do |form|
+
+        = render :partial => "shared/form-errors", :locals => {:object => @item}
+      
+        = form.hidden_field :category, :value => "income"
+        = hidden_field_tag :budget_id, @budget.id
+
+        .control-group
+          = form.label :name, :class => "control-label"
+          .controls
+            = form.text_field :name, :value => "Salary"
+            %p.help-block
+              You can change this to anything you like
+
+        .control-group
+          = form.label :amount, :class => "control-label"
+          .controls
+            = form.phone_field :amount, :value => cents_to_money(@item.amount)
+            %p.help-block
+              Estimate how much it will be
+  
+        .control-group
+          = form.label :starts_on, :class => "control-label"
+          .controls
+            = form.text_field :starts_on, :value => (@item.starts_on.try(:strftime, "%d/%m/%Y")), :class => "date"
+            %p.help-block
+              Choose the first day this month that it's most likely to be paid to you
+
+        .control-group
+          = form.label :schedule, :class => "control-label"
+          .controls
+            = form.select :schedule, Constants::Items::SCHEDULES.map{ |s| [s.capitalize, s] }
+            %p.help-block
+              This is handy for income that is paid to you on a regular basis
+
+        .form-actions
+          %button.button.button-primary{:type => "submit"}= t("actions.save")
+  

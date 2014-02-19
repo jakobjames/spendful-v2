@@ -1,0 +1,20 @@
+- title "New Password"
+- @body_class = "pages"
+
+
+.span6.offset3.form-box
+
+  %h1.heading
+    New Password
+  
+  %form.form-horizontal{:method => "post", :action => forgot_password_path, :novalidate => true}
+
+    .control-group
+      = label_tag :email, "Email", :class => "control-label"
+      .controls
+        = email_field_tag :email, "", :autocorrect => "off", :autocapitalize => "off"
+
+    .form-actions
+      %button.button.button-primary{:type => "submit"}
+        = t("continue")
+        %b.icon.icon-arrow-right.icon-white

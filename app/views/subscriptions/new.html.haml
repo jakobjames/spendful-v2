@@ -1,0 +1,40 @@
+- title "Upgrade to Spendful Premium"
+- @body_class = "subscription new-subscription"
+
+- content_for :assets do
+  = stylesheet_link_tag "pages/subscription"
+
+.container
+
+  .span6.offset3.form-box
+
+    - if current_user.trial_days_left >= 0
+      %h1.heading
+        Upgrade to Premium
+    
+      %p 
+        You have 
+        %strong #{current_user.trial_days_left} days 
+        left of your free trial.
+      %p You can upgrade to Spendful Premium at anytime.
+      
+      %p
+        We really hope you've had enough time to try it out, and if you find it useful we'd like to ask you to pay something towards it's upkeep so we can make it even better. Remember, you can give us feedback on any improvements you'd like to see using the form on the bottom of the budget page, or email the owner - 
+        %a{:href => "mailto:mitchell@spendful.com"} mitchell@spendful.com
+    
+    - else
+      %h1.heading
+        Thank you for trying out Spendful.
+    
+      %p We hope you have had enough time to try it out.
+      %p To continue using Spendful, you must upgrade to Spendful Premium.
+    
+    = form_tag subscription_payment_path, {:method => "post", :class => "form-horizontal", :novalidate => "true", :autocomplete => "off"} do
+
+      .control-group
+        = label_tag :plan, "Payment Plan", :class => "control-label"
+        .controls
+          = select_tag :plan, options_for_select(@plans)
+
+      .form-actions
+        %button.button.button-primary{:type => "submit"}= t("actions.continue")

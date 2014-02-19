@@ -1,0 +1,26 @@
+- title @budget.name + " " + t("budgets.edit.title")
+
+
+.container
+
+  .span6.offset3.form-box
+
+    %h1.heading
+      = t("budgets.edit.title")
+    
+    = form_for @budget, :html => {:class => "form-horizontal", :novalidate => "true"} do |form|
+
+      = render :partial => "shared/form-errors", :locals => {:object => @budget}
+
+      = render :partial => "form", :locals => {:form => form}
+
+      .form-actions
+        %button.button.button-primary{:type => "submit"}= t("actions.save")
+
+  .span6.offset3.form-box.delete
+  
+    %h3.heading Delete this budget?
+    
+    .form-actions
+      %a.button.button-negative{:href => budget_path(@budget), :data => {:confirm => "Are you sure?", :method => "delete"}}
+        Delete budget

@@ -1,0 +1,46 @@
+- title t("upgrade.title")
+- @active = "upgrade"
+- @body_class = "upgrade"
+
+- content_for :assets do
+  = stylesheet_link_tag "pages/subscription"
+  -#= javascript_include_tag "pages/subscription"
+
+
+.container
+  
+  = render :partial => "users/aside"
+
+  .content.pull-left
+
+    %h1= t("upgrade.title")
+
+    %p
+      It costs £5 per month, and it's awesome.
+
+    %form{:action => subscription_path, :novalidate => "true"}
+
+      .field.field-actions
+        %button.button.button-primary{:type => "submit"}= t("upgrade.submit")
+    
+    %h4 Past subscriptions:
+    
+    %table.table-bordered.overview
+      %tr
+        %th
+          Started
+        %th
+          Ended
+        %th
+          Total paid
+      %tr
+        %td
+          %strong 11 Aug 2011
+          12 months, 5 days ago
+        %td
+          %strong 12 Sep 2012
+          24 days ago
+        %td
+          %strong &pound;120.00
+          &pound;5.00 per month (x5)
+

@@ -1,0 +1,89 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+
+  brand:            "Spendful"
+  domain:           "Spendful.com"
+  tagline:          "Your money — today, and in the future"
+  
+  actions:
+    continue:         "Continue"
+    submit:           "Submit"
+    send:             "Send"
+    save:             "Save"
+    logout:           "Log out"
+    back:             "Back"
+
+  home:
+    title:          "Home"
+    action:         "Home"
+
+  login:
+    title:          "Login"
+    action:         "Login"
+    hint:
+      password:     "Forgotten your password?"
+      remember:     "Not sure? Leave it un-ticked."
+
+    password:
+      title:          "Reset your password"
+      action:         "Reset your password"
+
+      new:
+        title:        "Create a new password"
+        submit:       "Save password"
+
+  signup:
+    title:          "Sign up"
+    action:         "Sign up"
+
+  terms:
+    title:          "Terms of use"
+    action:         "Terms of use"
+
+  privacy:
+    title:          "Privacy Policy"
+    action:         "Privacy Policy"
+
+  upgrade:
+    title:          "Upgrade"
+    action:         "Upgrade"
+    submit:         "Upgrade now"
+
+  subscription:
+    title:          "Your subscription"
+    action:         "My subscription"
+    cancel:         "Cancel subscription"
+
+  account:
+    title:        "Your details"
+    action:       "My details"
+    hint:
+      password:   "Leave blank if you don't want to change it."
+
+  budgets:
+    title:          "Your Budgets"
+    action:         "My Budgets"
+
+    new:
+      title:        "New budget"
+      action:       "New budget"
+      value:
+        name:       "Personal"
+      hint:
+        name:       "e.g. Personal or Company"
+        balance:    "Your balance as it is right now."
+
+    edit:
+      title:        "Budget settings"
+      action:       "Settings"
+
+  budget:
+    title:          "Budget"
+    action:         "My Budget"
+    items:          "Budget items"
+    transactions:   "Transactions"
+  
+  date:
+    today:          "Today"

@@ -1,0 +1,32 @@
+- title "My Budgets"
+- @body_class = "budget"
+
+- content_for :assets do
+  = stylesheet_link_tag "pages/budgets"
+  = javascript_include_tag "pages/budgets"
+
+.row
+  
+  .span9
+    
+    %ul.budgets-list
+      - @budgets.each do |budget|
+        %li.budget
+          %a{:href => budget_path(budget)}
+            %span.budget-heading
+              %strong= budget.name
+              Budget
+            %span.balance
+              %span.balance-label Today
+              - balance_today = cents_to_money(budget.balance(Date.today), budget.currency)
+              - negative = balance_today.cents < 0
+              %span.balance-amount.today{:class => (negative ? 'negative' : 'positive') }
+                = balance_today.currency.html_entity.html_safe
+                = balance_today.format(:symbol => false, :no_cents_if_whole => true)
+  
+  .span3
+    
+    %a.button.button-primary.new-budget{:href => new_budget_path}
+      Start a 
+      %strong New Budget
+

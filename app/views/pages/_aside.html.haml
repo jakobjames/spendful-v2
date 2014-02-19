@@ -1,0 +1,6 @@
+.aside
+
+  .nav.nav-pills
+    = link_to t("home.title"), root_path
+    = link_to t("terms.title"), terms_path, :class => "#{"active" if @active == "terms"}"
+    = link_to t("privacy.title"), privacy_path, :class => "#{"active" if @active == "privacy"}"

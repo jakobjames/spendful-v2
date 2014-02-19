@@ -1,0 +1,17 @@
+= form.hidden_field :category, :readonly => true
+= hidden_field_tag :occurrence, @occurrence.date, :readonly => true if @occurrence.present?
+
+.control-group
+  = form.label :description, :class => "control-label"
+  .controls
+    = form.text_field :description
+
+.control-group
+  = form.label :amount, :class => "control-label"
+  .controls
+    = form.phone_field :amount, :value => cents_to_money(@transaction.amount)
+    
+.control-group
+  = form.label :date, :class => "control-label"
+  .controls
+    = form.text_field :date, :value => (@transaction.date.try(:strftime, "%d/%m/%Y") || session[:budget_date].strftime("%d/%m/%Y")), :class => "date"

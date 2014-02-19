@@ -1,0 +1,40 @@
+- @expected += occurrence.amount
+- @actual += occurrence.actual
+
+.item{:data => {:id => "#{occurrence.date}-#{occurrence.item.id}"}}
+
+  - if occurrence.transactions.any?
+    %a.toggle-transactions.column{:href => "#"}
+      %span.icon.icon-arrow-down
+  - else
+    .column.offset &nbsp;
+
+  %a.edit-item.column.date{:href => edit_budget_item_path(@budget, occurrence.item, {:occurrence => occurrence.date})}
+    = occurrence.date.day.ordinalize
+    
+  %a.edit-item.column.name{:href => edit_budget_item_path(@budget, occurrence.item, {:occurrence => occurrence.date})}
+    = occurrence.item.name
+    
+  %a.edit-item.column.expected{:href => edit_budget_item_path(@budget, occurrence.item, {:occurrence => occurrence.date})}
+    = cents_to_money(occurrence.amount, @budget.currency).format(:no_cents_if_whole => true)
+    
+  .column.new-transaction
+    %a.add-transaction.button.button-light{:href => new_budget_item_transaction_path(@budget, occurrence.item, {:occurrence => occurrence.date})}
+      %b.icon.icon-plus
+    
+  .column.actual{:class => "#{occurrence.actual <= occurrence.amount ? "under" : "over"} #{"zero" if occurrence.actual == 0}"}
+    = cents_to_money(occurrence.actual, @budget.currency).format(:no_cents_if_whole => true)
+  
+  .transactions
+    
+    - occurrence.transactions.each do |transaction|
+      %a.edit-transaction.transaction{:href => edit_budget_item_transaction_path(@budget, occurrence.item, transaction)}
+        .column.date
+          = transaction.date.day.ordinalize
+        .column.name
+          - if transaction.date.month != occurrence.date.month
+            = transaction.date.strftime("%b") 
+            &mdash;
+          = transaction.description
+        .column.actual
+          = cents_to_money(transaction.amount, @budget.currency).format(:no_cents_if_whole => true)

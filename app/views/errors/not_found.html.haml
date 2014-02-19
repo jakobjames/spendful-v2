@@ -1,0 +1,11 @@
+.container
+
+  %h1 Sorry, we have lost that page!
+
+  %p
+    We have been notified, and will make it a priority to fix this.
+  
+  - if request.referer.present?
+    %p
+      Try
+      %a{:href => request.referer} Going back

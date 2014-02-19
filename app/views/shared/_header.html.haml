@@ -1,0 +1,61 @@
+- if budget?
+
+  %h1.budget-title= @budget.name
+
+  %ul.navigation.nav-dates
+    
+    - if (@date_end - 1.month) > @budget.beginning
+      %li
+        %a.button.button-large.button-dark.icon.previous{:href => budget_path(@budget, {:month => (@date_beginning - 1.month).month, :year => (@date_beginning - 1.month).year})}
+          %b.icon.icon-white.icon-arrow-left
+    - else
+      %li
+        %a.button.button-large.button-dark.icon.previous.disabled{:href => budget_path(@budget, {:month => @date_beginning.month, :year => @date_beginning.year})}
+          %b.icon.icon-white.icon-arrow-left
+        
+    - if (@date_beginning + 1.month) > @budget.beginning
+      %li
+        %a.button.button-large.button-dark.icon.next{:href => budget_path(@budget, {:month => (@date_beginning + 1.month).month, :year => (@date_beginning + 1.month).year})}
+          %b.icon.icon-white.icon-arrow-right
+  
+    - if @today > @date_end || @today < @date_beginning
+      %li
+        %a.button.button-large.button-dark.today{:href => budget_path(@budget, {:month => @today.month, :year => @today.year})}= t("date.today")
+  
+  %h2.dates
+    %strong= @date_beginning.day
+    = @date_beginning.strftime("%b")
+    &mdash;
+    %strong= @date_end.day
+    = @date_end.strftime("%b")
+    %span.light= @date_end.year
+
+- else
+
+  - if budgets?
+  
+    %ul.navigation.nav-back
+      %a.button.button-light{:href => budgets_path}
+        %b.icon.icon-arrow-left
+        = t("budget.action")
+        
+  - elsif params[:action] != "new" && params[:action] != "create"
+  
+    %ul.navigation.nav-back
+      %li
+        %a.button.button-light{:href => new_budget_path}
+          %b.icon.icon-plus
+          = t("budgets.new.action")
+
+.navigation.dropdown.nav-account
+  %li.dropdown
+    %a.button.button-large.button-light.icon.dropdown-toggle{:href => "#", :data => {:toggle => "dropdown"}}
+      %b.icon.icon-user
+      %b.caret
+    %ul.dropdown-menu
+      - if current_user.trial?
+        %li= link_to "Upgrade to Premium", new_subscription_path
+      - else
+        %li= link_to "Premium", subscriptions_path
+      %li= link_to t("account.action"), account_path
+      %li= link_to t("logout"), logout_path

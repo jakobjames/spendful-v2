@@ -1,0 +1,28 @@
+- title "Edit transaction"
+
+
+.container
+
+  .span6.offset3.form-box
+
+    %h1.heading
+      Edit transaction
+    
+    = form_for [@budget, @item, @transaction], :html => {:class => "form-horizontal", :novalidate => "true"} do |form|
+
+      = render :partial => "shared/form-errors", :locals => {:object => @transaction}
+
+      = render :partial => "form", :locals => {:form => form}
+
+      .form-actions
+        %button.button.button-primary{:type => "submit"}= t("actions.save")
+
+
+  .span6.offset3.form-box.delete
+  
+    %h3.heading Delete this item?
+    
+    .form-actions
+
+      %a.button.button-negative{:href => budget_transaction_path(@budget, @transaction), :data => {:confirm => "Are you sure?", :method => "delete"}}
+        Delete this transaction

@@ -1,0 +1,150 @@
+$button-padding: 12px
+
+.button,
+button
+  +opacity(.99)
+  +border-radius(4px)
+  +background-image(linear-gradient(rgba(white, .1) 45%, transparent 50%))
+  +text-shadow(rgba(black, .1) 0 1px 0)
+  +box-shadow(darken($medium, 10%) 0 2px 0)
+  position: relative
+  display: block
+  padding: $button-padding ($button-padding * 1.6) ($button-padding - 3)
+  color: white
+  background-color: $medium
+  font-size: 13px
+  font-weight: 700
+  letter-spacing: 1px
+  text-transform: uppercase
+  text-align: center
+  text-decoration: none
+  border: 0
+  &:hover
+    color: white
+    background-color: darken($medium, 10%)
+    text-decoration: none
+    .icon
+      +opacity(.9)
+  .open &,
+  &:active
+    +box-shadow(inset darken($medium, 10%) 0 2px 0)
+    top: 2px
+    background-color: darken($medium, 10%)
+    background-image: none
+  &.off
+    +opacity(.3)
+    background-image: none
+    background-color: $medium
+    cursor: default
+    &:hover
+      color: white
+      background-color: $medium
+    .open &,
+    &:active
+      +box-shadow(inset white 0 0 0)
+      padding: 12px 22px 11px
+      background-color: $medium
+  .icon
+    +opacity(.7)
+    margin-top: 1px
+    margin-left: 5px
+
+.button-medium
+  $button-padding: ($button-padding * .75)
+  padding: $button-padding ($button-padding * 1.6) ($button-padding - 3)
+
+.button-small
+  $button-padding: ($button-padding * .75)
+  padding: $button-padding ($button-padding * 1.6) ($button-padding - 2)
+  font-size: 12px
+
+.button-primary
+  +box-shadow(darken($primary, 10%) 0 2px 0)
+  color: white
+  background-color: $primary
+  &:hover
+    color: white
+    background-color: darken($primary, 5%)
+  .open &,
+  &:active
+    +box-shadow(inset darken($primary, 10%) 0 2px 0)
+    background-color: darken($primary, 5%)
+  &.off
+    background-color: $primary
+    &:hover
+      color: white
+      background-color: $primary
+    .open &,
+    &:active
+      background-color: $primary
+
+.button-secondary
+  +box-shadow(darken($secondary, 10%) 0 2px 0)
+  color: white
+  background-color: $secondary
+  &:hover
+    color: white
+    background-color: darken($secondary, 5%)
+  .open &,
+  &:active
+    +box-shadow(inset darken($secondary, 10%) 0 2px 0)
+    background-color: darken($secondary, 5%)
+  &.off
+    background-color: $secondary
+    &:hover
+      color: white
+      background-color: $secondary
+    .open &,
+    &:active
+      background-color: $secondary
+
+.button-light
+  +box-shadow(darken(#eaeaec, 10%) 0 2px 0)
+  color: $medium
+  background-color: #eaeaec
+  &:hover
+    +box-shadow(darken(#eaeaec, 15%) 0 2px 0)
+    color: $medium
+    background-color: darken(#eaeaec, 10%)
+  .open &,
+  &:active
+    +box-shadow(inset darken(#eaeaec, 15%) 0 2px 0)
+    background-color: darken(#eaeaec, 10%)
+
+.button-lighter
+  +box-shadow(darken(#eaeaec, 5%) 0 2px 0)
+  color: lighten($medium, 20%)
+  background-color: white
+  &:hover
+    +box-shadow(darken(#eaeaec, 10%) 0 2px 0)
+    color: $medium
+    background-color: white
+  .open &,
+  &:active
+    +box-shadow(inset darken(#eaeaec, 10%) 0 2px 0)
+    background-color: white
+
+.button-positive
+  +box-shadow(darken($green, 10%) 0 2px 0)
+  color: white
+  background-color: $green
+  &:hover
+    color: white
+    background-color: darken($green, 5%)
+  .open &,
+  &:active
+    +box-shadow(inset darken($green, 10%) 0 2px 0)
+    background-color: darken($green, 5%)
+
+.button-negative
+  +box-shadow(darken($red, 10%) 0 2px 0)
+  color: white
+  background-color: $red
+  &:hover
+    color: white
+    background-color: darken($red, 5%)
+  .open &,
+  &:active
+    +box-shadow(inset darken($red, 10%) 0 2px 0)
+    background-color: darken($red, 5%)
+

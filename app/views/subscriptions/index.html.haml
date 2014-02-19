@@ -1,0 +1,45 @@
+- title "Spendful Premium"
+- @body_class = "subscriptions"
+
+- content_for :assets do
+  = stylesheet_link_tag "pages/subscriptions"
+
+.container
+
+  %table
+    - current_user.subscriptions.each do |subscription|
+      %tr
+        %th Started on
+        - if subscription.expired?
+          %th Last renewal
+          %th Cancelled
+        - else
+          %th{:colspan => 2} Next renewal
+        %th Card Name
+        %th Card Type
+        %th Card Number
+        %th.actions{:colspan => 2} Status
+      %tr
+        %td= subscription.started_on
+        - if subscription.expired?
+          %td= subscription.expires_on
+          %td= subscription.cancelled_on
+        - else
+          %td{:colspan => 2}= subscription.expires_on
+        %td= subscription.card_name
+        %td= subscription.card_type
+        %td
+          **** **** ****
+          = subscription.card_last4
+        %td.status
+          = "Active" if subscription.active?
+          = "Pending" if subscription.in_grace_period?
+          = "Expired" if subscription.expired?
+        %td.actions
+          - if !subscription.expired?
+            = link_to "Cancel", subscription_path(subscription), :method => "delete", :confirm => "Are you sure?", :class => "button button-primary"
+      %tr
+        %th.spacer{:colspan => 8} &nbsp;
+    
+  - if current_user.trial?
+    = link_to "Upgrade to Premium", new_subscription_path, :class => "button button-primary"

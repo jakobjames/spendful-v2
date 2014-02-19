@@ -1,0 +1,28 @@
+@import vars
+@import compass
+@import mixins
+
+body.subscriptions
+
+  table
+    width: 100%
+    margin-bottom: 40px
+    
+    th
+      +opacity(.6)
+      padding: 10px
+      font-weight: normal
+      text-align: left
+      border-right: 1px solid rgba($dark, .05)
+    
+    td
+      padding: 10px
+      font-weight: bold
+      background-color: white
+      border-right: 1px solid rgba($dark, .05)
+    
+    .actions,
+    .spacer,
+    .status
+      border: 0
+    

@@ -1,0 +1,82 @@
+- title @budget.name + " " + t("budget.title")
+- @body_class = "budget"
+
+- content_for :assets do
+  = stylesheet_link_tag "pages/budget"
+  = javascript_include_tag "pages/budget"
+
+- if params[:tour]
+  = stylesheet_link_tag "pages/onboarding"
+  = javascript_include_tag "pages/onboarding"
+  :javascript
+    $(function(){
+      tour.start()
+    })
+
+  
+.row
+
+  .budget.span9
+
+    #budget-items
+
+      - ["income", "expense"].each do |category|
+        .items-wrapper{:class => category}
+          .items-header
+            .column.new-item
+              %a.add-item.button.button-lighter{:href => new_budget_item_path(@budget, {:category => category})}
+                %b.icon.icon-plus
+            .column.name
+              = category
+            .column.expected
+              Expected
+            .column.actual
+              Actual
+            
+          .items-body
+            - if @budget.occurrences({:starting => @date_beginning, :ending => @date_end, :category => category}).empty?
+              %p.blank
+                There are no #{category} items yet, add some!
+            - @expected = 0
+            - @actual = 0
+            - @budget.occurrences({:starting => @date_beginning, :ending => @date_end, :category => category}).each do |occurrence|
+              = render :partial => "budgets/occurrence", :locals => {:occurrence => occurrence}
+          
+            - @budget.misc_transactions({:starting => @date_beginning, :ending => @date_end, :category => category}).each do |transaction|
+              - @actual += transaction.amount
+              .misc-transaction
+                .column.offset &nbsp;
+                .column.date
+                  = transaction.date.day.ordinalize
+                %a.edit-transaction.column.name{:href => edit_budget_transaction_path(@budget, transaction)}
+                  %strong.label Misc
+                  %span
+                    = transaction.description
+                .column.actual
+                  = cents_to_money(transaction.amount, @budget.currency).format(:no_cents_if_whole => true)
+      
+
+                
+          .items-footer
+            - if @budget.occurrences({:starting => @date_beginning, :ending => @date_end, :category => category}).any?
+              .column.title
+                Totals
+              .column.expected
+                = cents_to_money(@expected, @budget.currency).format(:no_cents_if_whole => true)
+              .column.actual
+                = cents_to_money(@actual, @budget.currency).format(:no_cents_if_whole => true)
+
+
+  .aside.span3
+    = render :partial => "budgets/aside"
+
+#feedback
+  %a{:name => "feedback"}
+
+  = form_tag feedback_path do
+
+    .control-group
+      = label_tag :message, "Send us your suggestions, complaints or ideas to make Spendful.com better for you."
+      = text_area_tag :message, "", :class => "input-block-level"
+
+    %button{:type => "submit"} Send

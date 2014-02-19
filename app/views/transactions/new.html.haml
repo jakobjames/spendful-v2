@@ -1,0 +1,18 @@
+- title "New transaction"
+
+
+.container
+
+  .span6.offset3.form-box
+
+    %h1.heading
+      New transaction
+    
+    = form_for [@budget, @item, @transaction], :html => {:class => "form-horizontal", :novalidate => "true"} do |form|
+
+      = render :partial => "shared/form-errors", :locals => {:object => @transaction}
+
+      = render :partial => "form", :locals => {:form => form}
+
+      .form-actions
+        %button.button.button-primary{:type => "submit"}= t("actions.save")
