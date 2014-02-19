@@ -35,7 +35,8 @@ class User < ActiveRecord::Base
   end
 
   def trial?
-    self.trial_days_left > 0
+    # self.trial_days_left > 0
+    true
   end
 
   def User.authenticate(email, password)
