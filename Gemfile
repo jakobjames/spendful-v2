@@ -59,7 +59,7 @@ gem 'sentry-raven'
 # https://github.com/seejohnrun/ice_cube
 gem 'ice_cube'
 
-gem 'money'
+gem 'money', '~> 5.1.1'
 gem 'country_select'
 
 # subscriptions
