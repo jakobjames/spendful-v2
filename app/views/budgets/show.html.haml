@@ -4,6 +4,36 @@
 - content_for :assets do
   = stylesheet_link_tag "pages/budget"
   = javascript_include_tag "pages/budget"
+  :javascript
+    var receptiveAppSettings = {
+      "return_url":"#{budget_url(@budget)}",
+      "timestamp":"#{Time.now}",
+      "account":{
+        "id":"#{current_user.subscriptions.last.reference if current_user.subscriptions.any?}",
+        "name":"#{current_user.email}",
+        "monthly_value":"#{Constants::Subscriptions::PLANS.collect{ |p| p if p[:id] == current_user.subscriptions.last.plan }[0]["amount"] if current_user.subscriptions.any?}",
+        "is_paying":"#{!current_user.trial?}"},
+      "vendor":{
+        "id":"vendor-5523bd69-320a-4076-a71d-0158b2293f3e"},
+      "user":{
+        "id":"#{current_user.id}",
+        "email":"#{current_user.email}",
+        "full_name":"#{current_user.email}"}
+      };
+    (function() {
+      function async_load() {
+        var s = document.createElement('script');
+        s.type = 'text/javascript'; s.async = true;
+        s.src = 'https://receptive.io/js/widget/widget.js';
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
+      }
+      if (window.attachEvent) {
+        window.attachEvent('onload', async_load);
+      } else {
+        window.addEventListener('load', async_load, false);
+      }
+    })();
 
 - if params[:tour]
   = stylesheet_link_tag "pages/onboarding"
@@ -13,7 +43,7 @@
       tour.start()
     })
 
-  
+
 .row
 
   .budget.span9
@@ -32,7 +62,7 @@
               Expected
             .column.actual
               Actual
-            
+
           .items-body
             - if @budget.occurrences({:starting => @date_beginning, :ending => @date_end, :category => category}).empty?
               %p.blank
@@ -41,7 +71,7 @@
             - @actual = 0
             - @budget.occurrences({:starting => @date_beginning, :ending => @date_end, :category => category}).each do |occurrence|
               = render :partial => "budgets/occurrence", :locals => {:occurrence => occurrence}
-          
+
             - @budget.misc_transactions({:starting => @date_beginning, :ending => @date_end, :category => category}).each do |transaction|
               - @actual += transaction.amount
               .misc-transaction
@@ -54,9 +84,9 @@
                     = transaction.description
                 .column.actual
                   = cents_to_money(transaction.amount, @budget.currency).format(:no_cents_if_whole => true)
-      
 
-                
+
+
           .items-footer
             - if @budget.occurrences({:starting => @date_beginning, :ending => @date_end, :category => category}).any?
               .column.title

@@ -19,14 +19,14 @@
         %a.button.button-light.button-small{:href => budget_path + "?show_transactions=true", :class => "#{"active" if params[:show_transactions]}"}
           = t("budget.transactions")
 
-    - if current_user.trial?
+    -# if current_user.trial?
       - if current_user.trial_days_left < (Constants::Subscriptions::TRIAL_PERIOD / 2)
         %p.trial
           You have #{current_user.trial_days_left} days left to try Spendful.
       - else
         %p.trial
           Spendful is completely free to try for 60 days.
-    - else
+    - unless current_user.trial?
       %p.trial
         Thankyou for supporting Spendful :)
 

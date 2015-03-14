@@ -6,7 +6,7 @@
 
   %h1.heading
     = t("login.title")
-  
+
   %form.form-horizontal{:method => "post", :action => login_path, :novalidate => true}
 
     .control-group
@@ -20,10 +20,10 @@
         = password_field_tag :password
         %p.help-block
           %a{:href => forgot_password_path} Forgot your password?
-          
+
     -# TODO: add a "remember me" checkbox to set a permanent cookie
 
     .form-actions
       %button.button.button-primary{:type => "submit"}
-        = t("continue")
+        = t("actions.continue")
         %b.icon.icon-arrow-right.icon-white

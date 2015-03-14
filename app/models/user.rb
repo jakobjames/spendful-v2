@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessor :password
   attr_accessible :email, :password, :name, :address_line1, :address_line2, :address_city, :address_zip, :country
-  
+
   has_many :budgets, :dependent => :destroy, :order => 'budgets.updated_at desc'
   has_many :feedbacks, :dependent => :destroy
   has_many :subscriptions, :dependent => :destroy
@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   def premium?
     self.current_subscription.present?
   end
-  
+
   def trial_days_left
     return -1 if self.premium?
     launch_date = Constants::Subscriptions::LAUNCH_DATE
@@ -35,18 +35,19 @@ class User < ActiveRecord::Base
   end
 
   def trial?
-    self.trial_days_left > 0
+    # self.trial_days_left > 0
+    true
   end
 
   def User.authenticate(email, password)
     user = find_by_email(email.downcase)
-    
+
     return nil, Constants::Users::UNKNOWN_EMAIL unless user
-    
+
     # have a user, does the password match?
     return (BCrypt::Password.new(user.password_digest) == password.downcase) ? [user, Constants::Users::LOGIN_SUCCESSFUL] : [nil, Constants::Users::WRONG_PASSWORD]
   end
-  
+
   def update_personal(attributes)
     attributes.each{|attr| attributes.delete(attr) unless read_attribute(attr).nil?}
     self.update_attributes(attributes)

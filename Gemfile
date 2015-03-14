@@ -1,7 +1,10 @@
 source 'https://rubygems.org'
+ruby "1.9.3"
 
 gem 'rails', '3.2.6'
 gem 'pg'
+
+gem 'uuidtools'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -37,8 +40,12 @@ group :development, :test do
   gem 'pry'
   gem 'pry-nav'
   gem 'pry-rails'
-  
+
   gem "letter_opener"
+end
+
+group :production do
+	gem 'rails_12factor'
 end
 
 gem 'thin'
@@ -52,7 +59,6 @@ gem 'sentry-raven'
 # https://github.com/seejohnrun/ice_cube
 gem 'ice_cube'
 
-gem 'fastspring-saasy'
 gem 'money'
 gem 'country_select'
 
