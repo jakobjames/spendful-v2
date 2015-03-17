@@ -11,7 +11,7 @@
       "account":{
         "id":"#{current_user.subscriptions.last.reference if current_user.subscriptions.any?}",
         "name":"#{current_user.email}",
-        "monthly_value":"#{Constants::Subscriptions::PLANS.collect{ |p| p if p[:id] == current_user.subscriptions.last.plan }[0]["amount"] if current_user.subscriptions.any?}",
+        "monthly_value":"0",
         "is_paying":"#{!current_user.trial?}"},
       "vendor":{
         "id":"vendor-5523bd69-320a-4076-a71d-0158b2293f3e"},
