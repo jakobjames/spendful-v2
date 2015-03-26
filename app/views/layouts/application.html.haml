@@ -24,16 +24,18 @@
       
         #header
           .container
-            - if page?
-              = render :partial => "pages/header"
-            - else
-              = render :partial => "shared/header"
+            .row
+              - if page?
+                = render :partial => "pages/header"
+              - else
+                = render :partial => "shared/header"
         
         #content
           = render :partial => "budgets/header" if budget?
           = render :partial => "shared/flashes"
           .container
-            = yield
+            .row
+              = yield
 
     #footer
       .container

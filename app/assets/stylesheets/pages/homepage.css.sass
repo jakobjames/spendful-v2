@@ -16,14 +16,23 @@ body.homepage
   #introduction
     background-color: white
     .container
-      height: 420px
+      min-height: 420px
       padding: 20px 0 40px
+      text-align: center
+
+      @media (min-width: $screen-md)
+        text-align: left
     
     .screenshot
       +box-shadow(inset rgba($dark, .2) 0 -5px 10px)
-      position: absolute
-      right: 0
-      bottom: 0
+      max-width: 100%
+
+      @media (min-width: $screen-md)
+        position: absolute
+        right: 0
+        bottom: 0
+        height: 350px
+        width: 600px
     
     .heading
       margin-bottom: 60px
@@ -69,15 +78,24 @@ body.homepage
   
   .details
     position: relative
-    height: 400px
+    min-height: 400px
     margin-bottom: 40px
     padding-top: 20px
-    padding-right: 50%
-    
+    text-align: center
+
     .screenshot
-      position: absolute
-      left: 50%
-      top: -30px
+      max-width: 100%
+    
+    @media (min-width: $screen-md)
+      text-align: left
+      padding-right: 50%
+
+      .screenshot
+        position: absolute
+        left: 50%
+        top: -30px
+        height: 530px
+        width: 750px
     
     .heading
       margin-bottom: 20px
