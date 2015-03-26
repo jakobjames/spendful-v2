@@ -169,6 +169,11 @@ GEM
       activesupport (= 3.2.6)
       bundler (~> 1.0)
       railties (= 3.2.6)
+    rails_12factor (0.0.2)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.2)
+    rails_stdout_logging (0.0.3)
     railties (3.2.6)
       actionpack (= 3.2.6)
       activesupport (= 3.2.6)
@@ -535,6 +540,7 @@ DEPENDENCIES
   pry-nav
   pry-rails
   rails (= 3.2.6)
+  rails_12factor
   rspec (~> 2.11.0)
   rspec-rails (~> 2.11.0)
   sass-rails (~> 3.2.3)
