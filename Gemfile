@@ -4,6 +4,8 @@ ruby "2.1.2"
 gem 'rails', '3.2.6'
 gem 'pg'
 
+gem 'uuidtools'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -12,7 +14,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'sass-rails',   '~> 3.2.3'
 	gem 'compass-rails'
-  gem 'bootstrap-sass', '~> 3.1.1'
+  gem 'bootstrap-sass'
   gem 'jquery-ui-rails'
 end
 
@@ -38,7 +40,6 @@ group :development, :test do
   gem 'pry'
   gem 'pry-nav'
   gem 'pry-rails'
-  
   gem "letter_opener"
 end
 
@@ -57,7 +58,7 @@ gem 'sentry-raven'
 # https://github.com/seejohnrun/ice_cube
 gem 'ice_cube'
 
-gem 'money'
+gem 'money', '~> 5.1.1'
 gem 'country_select'
 
 # subscriptions
@@ -65,5 +66,3 @@ gem 'stripe'
 gem 'stripe_event'
 
 gem 'mail_view', :git => 'https://github.com/37signals/mail_view.git'
-
-gem 'uuidtools'

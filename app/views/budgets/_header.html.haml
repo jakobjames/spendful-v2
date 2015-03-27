@@ -1,6 +1,5 @@
 .sub-nav
   .container
-    
     -#
       %ul.navigation.nav-switch
         %li
@@ -9,14 +8,14 @@
         %li
           %a.budgets.button.button-light.button-small.icon{:href => budget_path(:params => {:aside => "budgets"}), :class => "#{"active" if session[:aside] == "budgets"}"}
             %b.icon.icon-tasks
-    
+
     -#
       .nav-budget
         %a.button.button-light.button-small{:href => budget_path, :class => "#{"active" if !params[:show_transactions]}"}
           = t("budget.items")
         %a.button.button-light.button-small{:href => budget_path + "?show_transactions=true", :class => "#{"active" if params[:show_transactions]}"}
           = t("budget.transactions")
-  
+
     -# if current_user.trial?
       - if current_user.trial_days_left < (Constants::Subscriptions::TRIAL_PERIOD / 2)
         %p.trial
@@ -27,7 +26,7 @@
     - unless current_user.trial?
       %p.trial
         Thankyou for supporting Spendful :)
-    
+
     %ul.navigation.nav-settings
       %li
         %a.button.button-light.button-small.pull-right.settings{:href => edit_budget_path}

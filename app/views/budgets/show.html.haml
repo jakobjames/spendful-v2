@@ -13,7 +13,6 @@
       tour.start()
     })
 
-  
 .row
 
   .budget.span9
@@ -32,7 +31,7 @@
               Expected
             .column.actual
               Actual
-            
+
           .items-body
             - if @budget.occurrences({:starting => @date_beginning, :ending => @date_end, :category => category}).empty?
               %p.blank
@@ -41,7 +40,7 @@
             - @actual = 0
             - @budget.occurrences({:starting => @date_beginning, :ending => @date_end, :category => category}).each do |occurrence|
               = render :partial => "budgets/occurrence", :locals => {:occurrence => occurrence}
-          
+
             - @budget.misc_transactions({:starting => @date_beginning, :ending => @date_end, :category => category}).each do |transaction|
               - @actual += transaction.amount
               .misc-transaction
@@ -54,9 +53,7 @@
                     = transaction.description
                 .column.actual
                   = cents_to_money(transaction.amount, @budget.currency).format(:no_cents_if_whole => true)
-      
 
-                
           .items-footer
             - if @budget.occurrences({:starting => @date_beginning, :ending => @date_end, :category => category}).any?
               .column.title

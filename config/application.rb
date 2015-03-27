@@ -64,13 +64,21 @@ module Spendful
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 33fc03b2453f19538028dadc0a399bbd440cba15
     # Heroku requires this to be false
     config.assets.initialize_on_precompile = false
 
     # invoke router on exception
     config.exceptions_app = self.routes
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 33fc03b2453f19538028dadc0a399bbd440cba15
     config.force_ssl = (ENV["ENABLE_HTTPS"] == "yes")
     config.ssl_options = {hsts: {expires: 3600}}
   end

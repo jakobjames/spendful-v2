@@ -1,3 +1,19 @@
 Spendful
+
+http://spendful.com
+
+
+Setting up on Heroku:
 ---
-https://spendful.com
+
+Set the config variables:
+
+    heroku config:set STRIPE_API_KEY=
+    heroku config:set STRIPE_PUBLIC_KEY=
+    heroku config:set SENTRY_DSN=
+
+
+Mail View 
+---
+
+Preview Mailers here: http://localhost:3000/mail_view
