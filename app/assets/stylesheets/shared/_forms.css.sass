@@ -2,8 +2,19 @@ form,
 .form-horizontal
   margin: 0
   
+  .form-group
+    margin-bottom: 20px
+    margin-left: 0
+    margin-right: 0
+
   .control-label
     padding: 10px 0
+    float: left
+    width: 160px
+    text-align: right
+
+  .controls
+    margin-left: 180px
 
   input,
   input[type],
@@ -17,6 +28,7 @@ form,
     -moz-box-sizing: border-box
     box-sizing: border-box
     border: 0
+    border-radius: 4px
     
     &:focus
       +box-shadow(rgba($dark, .2) 0 1px 0)
@@ -33,10 +45,19 @@ form,
     &:focus,
     &:active
       border: 1px solid lighten($medium, 30%)
+
+  label
+    font-weight: normal
+    font-size: 14px
   
   .help-block
     +opacity(.9)
     font-size: 13px
+    margin-top: 10px
+
+.form-horizontal
+  .form-actions
+    padding-left: 180px
 
 .form-actions
   background-color: transparent
