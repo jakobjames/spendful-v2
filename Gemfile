@@ -14,7 +14,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'sass-rails',   '~> 3.2.3'
 	gem 'compass-rails'
-  gem 'bootstrap-sass'
+  gem 'bootstrap-sass', '~> 3.3.4'
   gem 'jquery-ui-rails'
 end
 
