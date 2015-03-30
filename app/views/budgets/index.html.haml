@@ -7,7 +7,7 @@
 
 .row
   
-  .span9
+  .col-md-9
     
     %ul.budgets-list
       - @budgets.each do |budget|
@@ -24,7 +24,7 @@
                 = balance_today.currency.html_entity.html_safe
                 = balance_today.format(:symbol => false, :no_cents_if_whole => true)
   
-  .span3
+  .col-md-3
     
     %a.button.button-primary.new-budget{:href => new_budget_path}
       Start a 

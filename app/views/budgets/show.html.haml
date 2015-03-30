@@ -15,7 +15,7 @@
 
 .row
 
-  .budget.span9
+  .budget.col-md-9
 
     #budget-items
 
@@ -64,7 +64,7 @@
                 = cents_to_money(@actual, @budget.currency).format(:no_cents_if_whole => true)
 
 
-  .aside.span3
+  .aside.col-md-3
     = render :partial => "budgets/aside"
 
 #feedback

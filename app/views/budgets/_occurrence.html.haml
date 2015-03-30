@@ -5,7 +5,7 @@
 
   - if occurrence.transactions.any?
     %a.toggle-transactions.column{:href => "#"}
-      %span.icon.icon-arrow-down
+      %span.glyphicon.glyphicon-arrow-down
   - else
     .column.offset &nbsp;
 
@@ -20,7 +20,7 @@
     
   .column.new-transaction
     %a.add-transaction.button.button-light{:href => new_budget_item_transaction_path(@budget, occurrence.item, {:occurrence => occurrence.date})}
-      %b.icon.icon-plus
+      %span.glyphicon.glyphicon-plus
     
   .column.actual{:class => "#{occurrence.actual <= occurrence.amount ? "under" : "over"} #{"zero" if occurrence.actual == 0}"}
     = cents_to_money(occurrence.actual, @budget.currency).format(:no_cents_if_whole => true)

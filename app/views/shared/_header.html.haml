@@ -7,16 +7,16 @@
     - if (@date_end - 1.month) > @budget.beginning
       %li
         %a.button.button-large.button-dark.icon.previous{:href => budget_path(@budget, {:month => (@date_beginning - 1.month).month, :year => (@date_beginning - 1.month).year})}
-          %b.icon.icon-white.icon-arrow-left
+          %span.glyphicon.icon-white.glyphicon-arrow-left
     - else
       %li
         %a.button.button-large.button-dark.icon.previous.disabled{:href => budget_path(@budget, {:month => @date_beginning.month, :year => @date_beginning.year})}
-          %b.icon.icon-white.icon-arrow-left
+          %span.glyphicon.icon-white.glyphicon-arrow-right
         
     - if (@date_beginning + 1.month) > @budget.beginning
       %li
         %a.button.button-large.button-dark.icon.next{:href => budget_path(@budget, {:month => (@date_beginning + 1.month).month, :year => (@date_beginning + 1.month).year})}
-          %b.icon.icon-white.icon-arrow-right
+          %span.glyphicon.icon-white.glyphicon-arrow-right
   
     - if @today > @date_end || @today < @date_beginning
       %li
@@ -36,7 +36,7 @@
   
     %ul.navigation.nav-back
       %a.button.button-light{:href => budgets_path}
-        %b.icon.icon-arrow-left
+        %span.glyphicon.glyphicon-arrow-left
         = t("budget.action")
         
   - elsif params[:action] != "new" && params[:action] != "create"
@@ -44,13 +44,13 @@
     %ul.navigation.nav-back
       %li
         %a.button.button-light{:href => new_budget_path}
-          %b.icon.icon-plus
+          %span.glyphicon.glyphicon-plus
           = t("budgets.new.action")
 
 .navigation.dropdown.nav-account
   %li.dropdown
     %a.button.button-large.button-light.icon.dropdown-toggle{:href => "#", :data => {:toggle => "dropdown"}}
-      %b.icon.icon-user
+      %span.glyphicon.glyphicon-user
       %b.caret
     %ul.dropdown-menu
       - if current_user.trial?
