@@ -13,8 +13,8 @@ group :assets do
   gem 'jquery-rails'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'sass-rails',   '~> 3.2.3'
-	gem 'compass-rails'
-  gem 'bootstrap-sass', '~> 3.3.4'
+  gem 'compass-rails'
+  gem 'bootstrap-sass'
   gem 'jquery-ui-rails'
 end
 
@@ -44,7 +44,7 @@ group :development, :test do
 end
 
 group :production do
-	gem 'rails_12factor'
+  gem 'rails_12factor'
 end
 
 gem 'thin'
