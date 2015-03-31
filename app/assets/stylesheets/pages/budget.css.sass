@@ -97,7 +97,17 @@ body.budget
         .icon
           margin: -2px 5px 0 0
 
-@media (max-width: 979px)
+  .balance
+    float: left
+    width: 100%
+
+    @media (min-width: $screen-sm)
+      width: 50%
+
+    @media (min-width: $screen-md)
+      width: 100%
+
+@media (max-width: $screen-md)
   
   body.budget
   
@@ -110,8 +120,4 @@ body.budget
     .budget
       #budget-items
         margin: 0
-    
-    .balance
-      float: left
-      width: 50%
   

@@ -24,28 +24,28 @@
         = form.hidden_field :category, :value => "income"
         = hidden_field_tag :budget_id, @budget.id
 
-        .control-group
+        .form-group
           = form.label :name, :class => "control-label"
           .controls
             = form.text_field :name, :value => "Salary"
             %p.help-block
               You can change this to anything you like
 
-        .control-group
+        .form-group
           = form.label :amount, :class => "control-label"
           .controls
             = form.phone_field :amount, :value => cents_to_money(@item.amount)
             %p.help-block
               Estimate how much it will be
   
-        .control-group
+        .form-group
           = form.label :starts_on, :class => "control-label"
           .controls
             = form.text_field :starts_on, :value => (@item.starts_on.try(:strftime, "%d/%m/%Y")), :class => "date"
             %p.help-block
               Choose the first day this month that it's most likely to be paid to you
 
-        .control-group
+        .form-group
           = form.label :schedule, :class => "control-label"
           .controls
             = form.select :schedule, Constants::Items::SCHEDULES.map{ |s| [s.capitalize, s] }

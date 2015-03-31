@@ -1,16 +1,16 @@
-.control-group
+.form-group
   = form.label :name, :class => "control-label"
   .controls
     = form.text_field :name
     %p.help-block= t("budgets.new.hint.name")
 
-.control-group
+.form-group
   = form.label :initial_balance, :class => "control-label"
   .controls
     = form.phone_field :initial_balance, :value => cents_to_money(@budget.initial_balance)
     %p.help-block= t("budgets.new.hint.balance")
 
-.control-group
+.form-group
   = form.label :currency, :class => "control-label"
   .controls
     = form.select :currency, major_currencies_with_symbol

@@ -9,7 +9,7 @@
   
   %form.form-horizontal{:method => "post", :action => forgot_password_path, :novalidate => true}
 
-    .control-group
+    .form-group
       = label_tag :email, "Email", :class => "control-label"
       .controls
         = email_field_tag :email, "", :autocorrect => "off", :autocapitalize => "off"

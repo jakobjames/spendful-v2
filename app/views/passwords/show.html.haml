@@ -9,7 +9,7 @@
   
   = form_tag reset_password_path(params[:id]), :method => :put, :novalidate => "true", :class => "form-horizontal" do
 
-    .control-group
+    .form-group
       = label_tag :password, "Password", :class => "control-label"
       .controls
         = password_field_tag :password

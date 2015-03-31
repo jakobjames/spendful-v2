@@ -15,6 +15,9 @@
 
 .row
 
+  .aside.col-md-3
+    = render :partial => "budgets/aside"
+
   .budget.col-md-9
 
     #budget-items
@@ -63,16 +66,12 @@
               .column.actual
                 = cents_to_money(@actual, @budget.currency).format(:no_cents_if_whole => true)
 
-
-  .aside.col-md-3
-    = render :partial => "budgets/aside"
-
 #feedback
   %a{:name => "feedback"}
 
   = form_tag feedback_path do
 
-    .control-group
+    .form-group
       = label_tag :message, "Send us your suggestions, complaints or ideas to make Spendful.com better for you."
       = text_area_tag :message, "", :class => "input-block-level"
 
