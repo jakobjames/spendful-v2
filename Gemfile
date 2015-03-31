@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.1.2"
+ruby "1.9.3"
 
 gem 'rails', '3.2.6'
 gem 'pg'
@@ -13,7 +13,7 @@ group :assets do
   gem 'jquery-rails'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'sass-rails',   '~> 3.2.3'
-	gem 'compass-rails'
+  gem 'compass-rails'
   gem 'bootstrap-sass'
   gem 'jquery-ui-rails'
 end
