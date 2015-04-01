@@ -94,15 +94,16 @@ body.budget
       
       .button
         max-width: 250px
+
+        @media (max-width: $screen-sm)
+          margin: 0 auto
+
         .glyphicon
           margin: -2px 5px 0 0
 
   .balance
     float: left
-    width: 100%
-
-    @media (min-width: $screen-sm)
-      width: 50%
+    width: 50%
 
     @media (min-width: $screen-md)
       width: 100%

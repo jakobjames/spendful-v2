@@ -31,9 +31,11 @@
             .column.name
               = category
             .column.expected
-              Expected
+              %span.hidden-xs Expected
+              %span.visible-xs Exp
             .column.actual
-              Actual
+              %span.hidden-xs Actual
+              %span.visible-xs Act
 
           .items-body
             - if @budget.occurrences({:starting => @date_beginning, :ending => @date_end, :category => category}).empty?

@@ -7,6 +7,7 @@
 
     %meta{:charset => "utf-8"}
     = csrf_meta_tags
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1"}
 
     %link{:rel => "icon", :href => image_path("favicon.png"), :type => "image/png"}
     %link{:rel => "apple-touch-icon", :href => image_path("favicon.png"), :type => "image/png"}
@@ -24,18 +25,16 @@
       
         #header
           .container
-            .row
-              - if page?
-                = render :partial => "pages/header"
-              - else
-                = render :partial => "shared/header"
+            - if page?
+              = render :partial => "pages/header"
+            - else
+              = render :partial => "shared/header"
         
         #content
           = render :partial => "budgets/header" if budget?
           = render :partial => "shared/flashes"
           .container
-            .row
-              = yield
+            = yield
 
     #footer
       .container

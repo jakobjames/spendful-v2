@@ -31,8 +31,9 @@ body.budgets
           margin-right: 15px
           padding-left: 0
           padding-right: 0
-          .icon
+          .glyphicon
             margin: -2px 0 0 1px
+            line-height: 14px
       
       .name
         width: $date-width + $name-width
@@ -90,6 +91,9 @@ body.budgets
       
       .offset
         width: $offset
+
+        @media (max-width: $screen-sm)
+          display: none
       
       .toggle-transactions
         +opacity(.5)
@@ -101,26 +105,52 @@ body.budgets
             background-position: -289px -96px
   
       .date
-        width: $date-width
+        width: 100%
+
+        @media (max-width: $screen-sm)
+          text-align: center
+
+        @media (min-width: $screen-sm)
+          width: $date-width
   
       .name
-        width: $name-width
+        width: 100%
         color: $dark
         font-size: 15px
         font-weight: bold
+
+        @media (max-width: $screen-sm)
+          text-align: center
+
+        @media (min-width: $screen-sm)
+          width: $name-width
   
       .expected
-        width: $expected-width
+        width: 50%
+
+        @media (max-width: $screen-sm)
+          text-align: center
+
+        @media (min-width: $screen-sm)
+          width: $expected-width
     
       .new-transaction
-        width: $offset
+        width: 25%
         line-height: 1
+
+        @media (min-width: $screen-sm)
+          width: $offset
+
         a
           margin-top: 7px
           margin-right: 15px
           padding-left: 0
           padding-right: 0
-          .icon
+          
+          @media (max-width: $screen-sm)
+            width: 50px
+
+          .glyphicon
             margin: -2px 0 0 1px
       
       .actual

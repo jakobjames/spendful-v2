@@ -1,34 +1,33 @@
 .sub-nav
   .container
-    .row
-      -#
-        %ul.navigation.nav-switch
-          %li
-            %a.balances.button.button-light.button-small.icon{:href => budget_path(:params => {:aside => "balances"}), :class => "#{"active" if session[:aside] == "balances"}"}
-              %span.glyphicon.glyphicon-eye-open
-          %li
-            %a.budgets.button.button-light.button-small.icon{:href => budget_path(:params => {:aside => "budgets"}), :class => "#{"active" if session[:aside] == "budgets"}"}
-              %span.glyphicon.glyphicon-tasks
-
-      -#
-        .nav-budget
-          %a.button.button-light.button-small{:href => budget_path, :class => "#{"active" if !params[:show_transactions]}"}
-            = t("budget.items")
-          %a.button.button-light.button-small{:href => budget_path + "?show_transactions=true", :class => "#{"active" if params[:show_transactions]}"}
-            = t("budget.transactions")
-
-      -# if current_user.trial?
-        - if current_user.trial_days_left < (Constants::Subscriptions::TRIAL_PERIOD / 2)
-          %p.trial
-            You have #{current_user.trial_days_left} days left to try Spendful.
-        - else
-          %p.trial
-            Spendful is completely free to try for 60 days.
-      - unless current_user.trial?
-        %p.trial
-          Thankyou for supporting Spendful :)
-
-      %ul.navigation.nav-settings
+    -#
+      %ul.navigation.nav-switch
         %li
-          %a.button.button-light.button-small.pull-right.settings{:href => edit_budget_path}
-            %span.glyphicon.glyphicon-cog
+          %a.balances.button.button-light.button-small.icon{:href => budget_path(:params => {:aside => "balances"}), :class => "#{"active" if session[:aside] == "balances"}"}
+            %span.glyphicon.glyphicon-eye-open
+        %li
+          %a.budgets.button.button-light.button-small.icon{:href => budget_path(:params => {:aside => "budgets"}), :class => "#{"active" if session[:aside] == "budgets"}"}
+            %span.glyphicon.glyphicon-tasks
+
+    -#
+      .nav-budget
+        %a.button.button-light.button-small{:href => budget_path, :class => "#{"active" if !params[:show_transactions]}"}
+          = t("budget.items")
+        %a.button.button-light.button-small{:href => budget_path + "?show_transactions=true", :class => "#{"active" if params[:show_transactions]}"}
+          = t("budget.transactions")
+
+    -# if current_user.trial?
+      - if current_user.trial_days_left < (Constants::Subscriptions::TRIAL_PERIOD / 2)
+        %p.trial
+          You have #{current_user.trial_days_left} days left to try Spendful.
+      - else
+        %p.trial
+          Spendful is completely free to try for 60 days.
+    - unless current_user.trial?
+      %p.trial
+        Thankyou for supporting Spendful :)
+
+    %ul.navigation.nav-settings
+      %li
+        %a.button.button-light.button-small.pull-right.settings{:href => edit_budget_path}
+          %span.glyphicon.glyphicon-cog
