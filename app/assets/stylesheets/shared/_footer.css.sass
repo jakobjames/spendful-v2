@@ -7,7 +7,7 @@
   
   a
     +opacity(.6)
-    padding: 5px
+    padding: 5px 5px 5px 0
     margin-right: 10px
     color: $text
     display: block
@@ -17,10 +17,19 @@
 
     @media (min-width: $screen-sm)
       display: inline-block
+
+      &:first-of-type
+        padding-left: 0
   
   .legal
     margin-top: 10px
+
+  .nav-pages
+    @media (min-width: $screen-sm)
+      float: left !important
   
   .copyright
     +opacity(.4)
-    float: right
+
+    @media (min-width: $screen-sm)
+      float: right

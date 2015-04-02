@@ -1,18 +1,35 @@
 = link_to image_tag("shared/logo-spendful.png", :alt => t("brand"), :size => "125x50"), root_path, :class => "brand"
 
-.nav.nav-primary.pull-right
+.navbar-header
   
-  = link_to t("home.action"), root_path
+  %button{:class => "navbar-toggle collapsed", "data-toggle" => "collapse", "data-target" => "navbar-collapse"}
+    
+    %span.sr-only Toggle navigation
+    %span.icon-bar
+    %span.icon-bar
+    %span.icon-bar
 
-  - if logged_in?
-  
-    - if budgets?
-      = link_to t("budget.action"), budget_path((@budget || current_user.budgets.first))
+.collapse.navbar-collapse
+
+  %ul.nav.nav-primary.pull-right
+    
+    %li
+      = link_to t("home.action"), root_path
+
+    - if logged_in?
+    
+      - if budgets?
+        %li
+          = link_to t("budget.action"), budget_path((@budget || current_user.budgets.first))
+      - else
+        %li
+          = link_to t("budgets.new.action"), budgets_path
+      %li
+        = link_to t("account.action"), account_path
+
     - else
-      = link_to t("budgets.new.action"), budgets_path
-    = link_to t("account.action"), account_path
-
-  - else
-  
-    = link_to t("login.action"), login_path
-    = link_to t("signup.action"), signup_path
+    
+      %li
+        = link_to t("login.action"), login_path
+      %li
+        = link_to t("signup.action"), signup_path

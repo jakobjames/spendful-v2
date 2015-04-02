@@ -9,12 +9,16 @@ form,
 
   .control-label
     padding: 10px 0
-    float: left
-    width: 160px
     text-align: right
 
+    @media (min-width: $screen-sm)
+      width: 160px
+      float: left
+
   .controls
-    margin-left: 180px
+
+    @media (min-width: $screen-sm)
+      margin-left: 180px
 
   input,
   input[type],
@@ -29,6 +33,10 @@ form,
     box-sizing: border-box
     border: 0
     border-radius: 4px
+
+    @media (max-width: $screen-sm)
+      max-width: 280px
+      width: auto
     
     &:focus
       +box-shadow(rgba($dark, .2) 0 1px 0)
@@ -63,7 +71,8 @@ form,
 
 .form-horizontal
   .form-actions
-    padding-left: 180px
+    @media (min-width: $screen-sm)
+      padding-left: 180px
 
 .form-actions
   background-color: transparent
@@ -73,11 +82,18 @@ form,
 
 .form-box
   position: relative
-  left: -40px
   margin-top: 40px
   margin-bottom: 40px
+
+  @media (min-width: $screen-sm)
+    left: -40px
   
   .heading
-    margin-left: 160px
+    margin-left: 0
     margin-bottom: 40px
+    text-align: center
+
+  @media (min-width: $screen-sm)
+    margin-left: 160px
+    text-align: left
 

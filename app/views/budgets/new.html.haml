@@ -3,16 +3,18 @@
 
 .container
 
-  .col-md-6.col-md-offset-3.form-box
+  .row
 
-    %h1.heading
-      = t("budgets.new.title")
-    
-    = form_for @budget, :html => {:class => "form-horizontal", :novalidate => "true"} do |form|
+    .col-md-6.col-md-offset-3.form-box
 
-      = render :partial => "shared/form-errors", :locals => {:object => @budget}
+      %h1.heading
+        = t("budgets.new.title")
+      
+      = form_for @budget, :html => {:class => "form-horizontal", :novalidate => "true"} do |form|
 
-      = render :partial => "form", :locals => {:form => form}
+        = render :partial => "shared/form-errors", :locals => {:object => @budget}
 
-      .form-actions
-        %button.button.button-primary{:type => "submit"}= t("actions.save")
+        = render :partial => "form", :locals => {:form => form}
+
+        .form-actions
+          %button.button.button-primary{:type => "submit"}= t("actions.save")

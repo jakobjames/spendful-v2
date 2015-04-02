@@ -25,10 +25,11 @@
       
         #header
           .container
-            - if page?
-              = render :partial => "pages/header"
-            - else
-              = render :partial => "shared/header"
+            .row
+              - if page?
+                = render :partial => "pages/header"
+              - else
+                = render :partial => "shared/header"
         
         #content
           = render :partial => "budgets/header" if budget?
@@ -38,4 +39,5 @@
 
     #footer
       .container
-        = render :partial => "shared/footer"
+        .col-xs-12
+          = render :partial => "shared/footer"

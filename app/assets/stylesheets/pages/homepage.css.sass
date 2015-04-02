@@ -16,7 +16,7 @@ body.homepage
   #introduction
     background-color: white
     .container
-      min-height: 420px
+      min-height: 480px
       padding: 20px 0 40px
       text-align: center
 
@@ -31,7 +31,7 @@ body.homepage
         position: absolute
         right: 0
         bottom: 0
-        height: 350px
+        height: 360px
         width: 600px
     
     .heading
@@ -54,14 +54,26 @@ body.homepage
         line-height: 2.2
     
     .signup
-      float: left
-      padding: 15px 30px 13px
+      padding: 13px 30px 11px
       font-size: 18px
+
+      .glyphicon
+        font-size: 13px
+
+      @media (max-width: $screen-sm)
+        max-width: 280px
+        margin: auto
+
+      @media (min-width: $screen-sm)
+        float: left
 
   .features,
   .statistics
-    padding: 100px 0
+    padding: 50px 0
     text-align: center
+
+    @media (min-width: $screen-sm)
+      padding: 100px 0
     
     .heading
       margin-bottom: 10px
