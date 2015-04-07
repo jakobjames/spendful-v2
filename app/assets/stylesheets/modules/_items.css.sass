@@ -25,15 +25,21 @@ body.budgets
         line-height: 35px
       
       .new-item
-        width: $offset
         line-height: 1
         a
           margin-right: 15px
           padding-left: 0
           padding-right: 0
+          width: 32px
           .glyphicon
             margin: -2px 0 0 1px
             line-height: 14px
+
+        @media (min-width: $screen-sm)
+          width: $offset
+
+          a
+            width: auto
       
       .name
         width: $date-width + $name-width
@@ -105,7 +111,7 @@ body.budgets
             background-position: -289px -96px
   
       .date
-        width: 100%
+        width: 20%
 
         @media (max-width: $screen-sm)
           text-align: center
@@ -114,13 +120,10 @@ body.budgets
           width: $date-width
   
       .name
-        width: 100%
+        width: 80%
         color: $dark
         font-size: 15px
         font-weight: bold
-
-        @media (max-width: $screen-sm)
-          text-align: center
 
         @media (min-width: $screen-sm)
           width: $name-width
@@ -201,22 +204,35 @@ body.budgets
       min-height: 4px
       font-size: 12px
       background-color: darken($background, 5%)
+      text-align: center
+
+      @media (min-width: $screen-sm)
+        text-align: left
       
       .column
         padding: 10px 0
       
       .title
         +opacity(.5)
-        width: $offset + $name-width
-        margin-right: $date-width
-        text-align: right
+        width: 100%
+
+        @media (min-width: $screen-sm)
+          width: $offset + $name-width
+          margin-right: $date-width
+          text-align: right
       
       .expected
-        width: $expected-width
+        width: 50%
+
+        @media (min-width: $screen-sm)
+          width: $expected-width
       
       .actual
-        width: $actual-width
-        margin-left: $offset
+        width: 50%
+
+        @media (min-width: $screen-sm)
+          width: $actual-width
+          margin-left: $offset
 
 
     .misc-transaction

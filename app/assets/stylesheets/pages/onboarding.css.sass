@@ -19,11 +19,24 @@ body.onboarding
   
   .actions
     margin-top: 40px
+    
     .button,
     button
       +opacity(.6)
-      float: right
+      width: 160px
+
+      @media (max-width: $screen-sm)
+        margin: auto
+
+      @media (min-width: $screen-sm)
+        float: right
+    
     .button-primary
       +opacity(1)
-      float: left
       width: 160px
+
+      @media (max-width: $screen-sm)
+        margin: auto auto 10px auto
+      
+      @media (min-width: $screen-sm)
+        float: left

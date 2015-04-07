@@ -32,10 +32,8 @@
               = category
             .column.expected
               %span.hidden-xs Expected
-              %span.visible-xs Exp
             .column.actual
               %span.hidden-xs Actual
-              %span.visible-xs Act
 
           .items-body
             - if @budget.occurrences({:starting => @date_beginning, :ending => @date_end, :category => category}).empty?
@@ -64,8 +62,10 @@
               .column.title
                 Totals
               .column.expected
+                %span.visible-xs Expected
                 = cents_to_money(@expected, @budget.currency).format(:no_cents_if_whole => true)
               .column.actual
+                %span.visible-xs Actual
                 = cents_to_money(@actual, @budget.currency).format(:no_cents_if_whole => true)
 
 #feedback

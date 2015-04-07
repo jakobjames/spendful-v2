@@ -27,7 +27,7 @@
     
     = form_tag subscription_payment_path, {:method => "post", :class => "form-horizontal", :novalidate => "true", :autocomplete => "off"} do
 
-      .control-group
+      .form-group
         = label_tag :plan, "Payment Plan", :class => "control-label"
         .controls
           = select_tag :plan, options_for_select(@plans)

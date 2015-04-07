@@ -25,11 +25,10 @@
       
         #header
           .container
-            .row
-              - if page?
-                = render :partial => "pages/header"
-              - else
-                = render :partial => "shared/header"
+            - if page?
+              = render :partial => "pages/header"
+            - else
+              = render :partial => "shared/header"
         
         #content
           = render :partial => "budgets/header" if budget?

@@ -22,47 +22,47 @@
       
       = hidden_field_tag :plan, @plan
 
-      .control-group
+      .form-group
         = label_tag :name, "Name on Card", :class => "control-label"
         .controls
           = telephone_field_tag :name, "", :data => {:stripe => "name"}
 
-      .control-group
+      .form-group
         = label_tag :address_line1, "House Name/Number", :class => "control-label"
         .controls
           = telephone_field_tag :address_line1, "", :data => {:stripe => "address_line1"}
 
-      .control-group
+      .form-group
         = label_tag :address_line2, "Street", :class => "control-label"
         .controls
           = telephone_field_tag :address_line2, "", :data => {:stripe => "address_line2"}
 
-      .control-group
+      .form-group
         = label_tag :address_city, "City/Town", :class => "control-label"
         .controls
           = telephone_field_tag :address_city, "", :data => {:stripe => "address_city"}
 
-      .control-group
+      .form-group
         = label_tag :address_zip, "Postcode/Zip", :class => "control-label"
         .controls
           = telephone_field_tag :address_zip, "", :data => {:stripe => "address_zip"}
           
-      .control-group
+      .form-group
         = label_tag :country, "Country", :class => "control-label"
         .controls
           = select_tag :country, options_for_select([["Choose one...", nil]]) + country_options_for_select
 
-      .control-group
+      .form-group
         = label_tag :number, "Credit Card Number", :class => "control-label"
         .controls
           = telephone_field_tag :number, "", :data => {:stripe => "number"}
 
-      .control-group
+      .form-group
         = label_tag :cvc, "CVC", :class => "control-label"
         .controls
           = telephone_field_tag :cvc, "", :data => {:stripe => "cvc"}
 
-      .control-group
+      .form-group
         = label_tag :expiration, "Expiration", :class => "control-label"
         .controls
           = select_tag :expiration_month, options_for_select((1..12).map {|n| "%02d" % n}), :data => {:stripe => "exp-month"}, :class => "expiration-month"
