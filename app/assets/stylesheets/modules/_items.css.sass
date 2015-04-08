@@ -46,10 +46,22 @@ body.budgets
         font-weight: bold
       
       .expected
-        width: $expected-width
+        width: 50%
+
+        @media (max-width: $screen-sm)
+          text-align: center
+
+        @media (min-width: $screen-sm)
+          width: $expected-width
       
       .actual
-        width: $offset + $actual-width
+        width: 50%
+
+        @media (max-width: $screen-sm)
+          text-align: center
+
+        @media (min-width: $screen-sm)
+          width: $offset + $actual-width
         
       .actual,
       .expected

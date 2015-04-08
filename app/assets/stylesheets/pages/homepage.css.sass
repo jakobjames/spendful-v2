@@ -72,7 +72,7 @@ body.homepage
     padding: 50px 0
     text-align: center
 
-    @media (min-width: $screen-sm)
+    @media (min-width: $screen-md)
       padding: 100px 0
     
     .heading
@@ -81,12 +81,21 @@ body.homepage
     p
       +opacity(.8)
       line-height: 1.5
+
+  .features
+    @media (max-width: $screen-md)
+      .feature
+        margin: 50px 0
   
   .statistics
     .heading
       margin-bottom: 20px
       font-size: 30px
       font-weight: 500
+
+    @media (max-width: $screen-md)
+      .statistic
+        margin: 50px 0
   
   .details
     position: relative
@@ -97,6 +106,9 @@ body.homepage
 
     .screenshot
       max-width: 100%
+
+      @media (max-width: $screen-md) 
+        margin-bottom: 50px
     
     @media (min-width: $screen-md)
       text-align: left
